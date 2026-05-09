@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkillsMP Clone</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="shell topbar">
+      <a class="brand" href="/" aria-label="SkillsMP">
+        <span class="brand-prefix">~/</span><span>skillsmp</span><span class="cursor"></span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#market">搜索</a>
+        <a href="#market">职业技能</a>
+        <a href="#market">洞察</a>
+        <a href="#docs">文档</a>
+      </nav>
+      <a class="github-link" href="#upload">登录</a>
+    </header>
+
+    <main>
+      <section class="promo-bar">
+        <div class="shell promo-inner">
+          <strong>manus</strong>
+          <span>一键在 Manus 中运行任何 Skill</span>
+          <a href="#upload">开始使用</a>
+          <span aria-hidden="true">x</span>
+        </div>
+      </section>
+
+      <section class="shell hero">
+        <div class="hero-copy">
+          <div class="eyebrow dots-label">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span>skills.marketplace</span>
+          </div>
+          <h1><span>&gt;</span> Agent Skills Marketplace</h1>
+          <p class="subline"><span>&gt;</span> 基于开放的 SKILL.md 生态系统</p>
+          <div class="stat-code">
+            <code><span>const</span> skills = <strong id="heroSkillCount">0</strong>;</code>
+            <small>// 发现来自本地社区的开源 Agent Skills</small>
+          </div>
+          <p>
+            AI 语义搜索或关键字筛选，按职业浏览，按热度排序。所有技能采用开放的 SKILL.md 标准，一键上传与下载。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#upload">上传 Skill</a>
+            <a class="button ghost" href="#market">GET /api/v1/skills</a>
+          </div>
+        </div>
+        <div class="terminal-panel trend-panel" aria-label="市场趋势">
+          <div class="panel-head">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="panel-title">trend-analytics.tsx</span>
+          </div>
+          <div class="chart" aria-hidden="true">
+            <div class="axis y"></div>
+            <div class="axis x"></div>
+            <svg viewBox="0 0 520 280" role="img" aria-label="skill 增长趋势">
+              <path class="area" d="M20 238 C95 220 140 200 190 174 C248 144 282 109 340 88 C391 69 424 26 500 18 L500 238 Z"></path>
+              <path class="line" d="M20 238 C95 220 140 200 190 174 C248 144 282 109 340 88 C391 69 424 26 500 18"></path>
+            </svg>
+          </div>
+          <p class="chart-caption">根据 Skill 最后 push 时间统计，当前提交的数量</p>
+        </div>
+      </section>
+
+      <section class="shell stats-strip" aria-label="平台统计">
+        <div>
+          <span id="skillCount">0</span>
+          <small>skills indexed</small>
+        </div>
+        <div>
+          <span id="downloadCount">0</span>
+          <small>downloads served</small>
+        </div>
+        <div>
+          <span>20MB</span>
+          <small>max package</small>
+        </div>
+        <div>
+          <span>.zip</span>
+          <small>recommended bundle</small>
+        </div>
+      </section>
+
+      <section class="shell workspace">
+        <section class="market" id="market" aria-labelledby="marketTitle">
+          <div class="market-window">
+            <div class="panel-head">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="panel-title">skills --list</span>
+              <span>ready</span>
+            </div>
+            <div class="section-head">
+              <div>
+                <h2 id="marketTitle"><span>&gt;</span> 浏览 Agent Skills</h2>
+              </div>
+              <div class="filters" aria-label="筛选">
+                <span>Filter by</span>
+                <button class="filter active" data-category="all">Occupation</button>
+                <button class="filter" data-category="Coding">Coding</button>
+                <button class="filter" data-category="Research">Research</button>
+                <button class="filter" data-category="Design">Design</button>
+                <button class="filter" data-category="Automation">Automation</button>
+                <button class="filter" data-category="General">General</button>
+              </div>
+            </div>
+            <label class="search">
+              <span>$ find</span>
+              <input id="searchInput" type="search" placeholder="搜索 1258633 个 skills: 试试 'code review', 'git automation', '数据分析'..." />
+            </label>
+          </div>
+          <div class="skill-grid" id="skillGrid"></div>
+          <div class="empty-state" id="emptyState" hidden>
+            <strong>No matching skills</strong>
+            <span>Try another keyword or publish the first package.</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="shell upload-section" id="upload">
+        <form class="upload-form" id="uploadForm">
+          <div class="panel-head">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="panel-title">publish-skill.md</span>
+            <span>POST /api/skills</span>
+          </div>
+          <div class="upload-body">
+            <div class="section-head">
+              <div>
+                <div class="path">/publish/new-skill</div>
+                <h2><span>&gt;</span> Upload Skill</h2>
+              </div>
+              <span class="method">SKILL.md</span>
+            </div>
+          <div class="form-grid">
+            <label>
+              <span>skill name</span>
+              <input name="title" required placeholder="github-reader" />
+            </label>
+            <label>
+              <span>author</span>
+              <input name="author" placeholder="@your-name" />
+            </label>
+            <label>
+              <span>version</span>
+              <input name="version" placeholder="v0.1.0" />
+            </label>
+            <label>
+              <span>category</span>
+              <select name="category">
+                <option>Coding</option>
+                <option>Research</option>
+                <option>Design</option>
+                <option>Automation</option>
+                <option>General</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            <span>README summary</span>
+            <textarea name="description" rows="4" placeholder="Describe what this skill does, when to use it, and any setup notes."></textarea>
+          </label>
+
+          <label>
+            <span>tags</span>
+            <input name="tags" placeholder="codex, cli, docs" />
+          </label>
+
+          <label class="dropzone" id="dropzone">
+            <input name="package" id="fileInput" type="file" required />
+            <span class="drop-icon">[pkg]</span>
+            <strong id="fileLabel">Drop skill package here</strong>
+            <small>ZIP, TAR, Markdown, or any package up to 20MB</small>
+          </label>
+
+          <div class="form-actions">
+            <button class="button primary" type="submit">upload_skill()</button>
+            <output id="formStatus" aria-live="polite"></output>
+          </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="shell docs" id="docs">
+        <div class="doc-block">
+          <span>README.md</span>
+          <p>每个 skill 会保留名称、作者、分类、标签、版本、下载次数和原始上传包。下载按钮走服务端路由，会同步累加下载计数。</p>
+        </div>
+        <div class="doc-block">
+          <span>api.http</span>
+          <p><code>GET /api/skills</code> 获取市场列表，<code>POST /api/skills</code> 上传，<code>GET /api/skills/:id/download</code> 下载。</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="detail-modal" id="detailModal" hidden>
+      <div class="detail-backdrop" data-close-detail></div>
+      <article class="detail-panel" aria-labelledby="detailTitle" aria-modal="true" role="dialog">
+        <div class="panel-head">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="panel-title" id="detailFileName">skill.md</span>
+          <button class="close-button" type="button" data-close-detail>close</button>
+        </div>
+        <div class="detail-body" id="detailBody"></div>
+      </article>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

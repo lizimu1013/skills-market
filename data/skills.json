@@ -1,0 +1,75 @@
+[
+  {
+    "id": "demo-skill",
+    "title": "demo-skill",
+    "description": "一个用于演示上传、详情页 Markdown 渲染和 ZIP 下载的本地 Skill。",
+    "author": "skillsmp/local-demo",
+    "category": "General",
+    "version": "v0.1.0",
+    "tags": [
+      "demo",
+      "markdown",
+      "zip"
+    ],
+    "filename": "demo-skill.zip",
+    "storedName": "demo-skill.zip",
+    "contentType": "application/zip",
+    "size": 859,
+    "files": [
+      {
+        "name": "openai.yaml",
+        "path": "agents/openai.yaml",
+        "relativePath": "agents/openai.yaml",
+        "type": "file",
+        "size": 94,
+        "isSkillFile": false
+      },
+      {
+        "name": "SKILL.md",
+        "path": "SKILL.md",
+        "relativePath": "SKILL.md",
+        "type": "file",
+        "size": 539,
+        "isSkillFile": true
+      }
+    ],
+    "tree": [
+      {
+        "name": "agents",
+        "path": "agents",
+        "relativePath": "agents",
+        "type": "dir",
+        "size": 0,
+        "children": [
+          {
+            "name": "openai.yaml",
+            "path": "agents/openai.yaml",
+            "relativePath": "agents/openai.yaml",
+            "type": "file",
+            "size": 94,
+            "isSkillFile": false
+          }
+        ]
+      },
+      {
+        "name": "SKILL.md",
+        "path": "SKILL.md",
+        "relativePath": "SKILL.md",
+        "type": "file",
+        "size": 539,
+        "isSkillFile": true
+      }
+    ],
+    "skillFile": {
+      "name": "SKILL.md",
+      "path": "SKILL.md",
+      "relativePath": "SKILL.md",
+      "type": "file",
+      "size": 539,
+      "isSkillFile": true
+    },
+    "markdown": "---\nname: demo-skill\ndescription: 一个用于演示上传、详情页 Markdown 渲染和 ZIP 下载的本地 Skill。\n---\n\n# Demo Skill\n\n这是一个内置示例，用来展示详情页会直接渲染上传包里的 `SKILL.md`。\n\n## 使用场景\n\n- 预览 Skill 的 Markdown 内容\n- 展示文件资源管理器中的真实包结构\n- 测试下载原始 ZIP 包\n\n## 工作流\n\n1. 打开详情页\n2. 查看 `SKILL.md` 渲染结果\n3. 点击 download 下载完整 ZIP\n\n`agents/openai.yaml` 只是这个 demo 包里的示例配置文件。\n",
+    "downloads": 0,
+    "createdAt": "2026-05-09T08:00:00.000Z"
+  }
+]
