@@ -106,8 +106,7 @@ textarea {
   margin-left: auto;
 }
 
-.nav a,
-.github-link {
+.nav a {
   display: inline-flex;
   min-height: 34px;
   align-items: center;
@@ -120,42 +119,9 @@ textarea {
   background: rgba(255, 255, 255, 0.92);
 }
 
-.nav a:first-child,
-.github-link {
+.nav a:first-child {
   border-color: #efb9a9;
   color: #111827;
-}
-
-.promo-bar {
-  color: white;
-  background: #171717;
-}
-
-.promo-inner {
-  display: flex;
-  min-height: 64px;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-}
-
-.promo-inner strong {
-  margin-right: auto;
-  font-size: 22px;
-}
-
-.promo-inner a {
-  padding: 8px 14px;
-  border-radius: 9px;
-  color: #171717;
-  font-weight: 800;
-  background: white;
-}
-
-.promo-inner span:last-child {
-  margin-left: auto;
-  color: #9ca3af;
-  font-size: 22px;
 }
 
 .hero {
@@ -1111,17 +1077,6 @@ code {
 
   .topbar {
     min-height: 58px;
-  }
-
-  .promo-inner {
-    min-height: 54px;
-    gap: 10px;
-    justify-content: flex-start;
-  }
-
-  .promo-inner strong,
-  .promo-inner span:last-child {
-    display: none;
   }
 
   .hero {
