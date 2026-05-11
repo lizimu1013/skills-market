@@ -388,8 +388,7 @@ h2 span,
 }
 
 .market-window {
-  max-width: 770px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .market-window .panel-head {
@@ -890,6 +889,7 @@ h2 {
 }
 
 .empty-state {
+  width: 100%;
   display: grid;
   min-height: 180px;
   place-items: center;
@@ -911,8 +911,9 @@ h2 {
 }
 
 .upload-form {
-  max-width: 880px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .upload-body {
